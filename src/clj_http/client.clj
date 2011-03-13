@@ -35,12 +35,12 @@
 
 
 (defn ensure-proper-url
-  [loc default-protocol default-host]
+  [loc default-protocol default-host-port]
   (cond (.startsWith loc "/")
-        (format "%s://%s%s" default-protocol default-host loc)
-
+        (format "%s://%s%s" default-protocol default-host-port loc)
+        
         (not (.startsWith loc "http"))
-        (format "%s://%s" default-protocol loc)
+        (format "%s://%s/%s" default-protocol default-host-port loc)
 
         :default
         loc))

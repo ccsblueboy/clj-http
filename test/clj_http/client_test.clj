@@ -52,8 +52,8 @@
 (deftest ensure-proper-url-test
   (is (= "http://host.com/path"
          (client/ensure-proper-url "/path" "http" "host.com")))
-  (is (= "https://foo.com/path"
-         (client/ensure-proper-url "foo.com/path" "https" "bar.com"))))
+  (is (= "https://bar.com:8443/path/no/slash"
+         (client/ensure-proper-url "path/no/slash" "https" "bar.com:8443"))))
 
 ;; http://f.com:443/orig -- /target -> http://f.com:443/doh
 ;; http://g.com/old -- /new -> http://g.com/new
